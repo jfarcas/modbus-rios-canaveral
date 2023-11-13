@@ -1,0 +1,25 @@
+{
+  "name": "modbus-canaveral",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node-dev ./src/index.ts",
+    "tsc": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "4.18.2",
+    "modbus-serial": "^8.0.13"
+  }
+}

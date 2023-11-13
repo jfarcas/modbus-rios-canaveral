@@ -4,7 +4,7 @@ import {readData} from './service/service'
 import dotenv from 'dotenv';
 dotenv.config();
 
-const port: number | undefined = process.env.PLC_PORT ? parseInt(process.env.PLC_PORT, 10) : 4321;
+const port: number | undefined = process.env.SERVER_PORT ? parseInt(process.env.SERVER_PORT, 10) : 4321;
 
 const app = express();
 app.use(express.json());

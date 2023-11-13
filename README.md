@@ -27,8 +27,8 @@ To use Read Modbus Variables, follow these steps:
 
 ## Contact
 
-If you want to contact me you can reach me at `<your_email@domain.com>`.
+If you want to contact me you can reach me at `iulianfarcas@gmail.com`.
 
 ## License
 
-This project uses the following license: [<license_name>](<link>).
+This project is free for any use.

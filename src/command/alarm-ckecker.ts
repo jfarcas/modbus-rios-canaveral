@@ -1,8 +1,8 @@
 
 import {ApiResponse, Client} from "@elastic/elasticsearch";
-import {config} from 'dotenv';
 import * as  nodemailer from 'nodemailer';
 import {Alarm, AlarmHit} from "../types";
+import {config} from 'dotenv';
 config( {path: __dirname + '/../../.env'});
 
 

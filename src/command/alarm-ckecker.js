@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _a;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var elasticsearch_1 = require("@elastic/elasticsearch");
 var dotenv_1 = require("dotenv");
 var nodemailer = require("nodemailer");
@@ -52,7 +52,7 @@ var mailTo = process.env.MAIL_TO ? process.env.MAIL_TO : 'localhost@localhost';
 var mailCc = process.env.MAIL_CC ? process.env.MAIL_CC : 'localhost@localhost';
 var alarmIndex = 'canaveral-error-data';
 var elkClient = new elasticsearch_1.Client({
-    node: elkUrl + ':' + elkPort
+    node: elkUrl + ':' + elkPort,
 });
 var checkAlarm = function () { return __awaiter(void 0, void 0, void 0, function () {
     var data, alarms, messageBody, _i, alarms_1, alarm, alarmData, error_1, transporter, mailOptions;
@@ -88,7 +88,7 @@ var checkAlarm = function () { return __awaiter(void 0, void 0, void 0, function
                 _a.label = 3;
             case 3:
                 _a.trys.push([3, 5, , 6]);
-                return [4 /*yield*/, elkClient.update({ index: alarmIndex, id: alarm._id, body: { doc: alarmData } })["catch"](function (err) {
+                return [4 /*yield*/, elkClient.update({ index: alarmIndex, id: alarm._id, body: { doc: alarmData } }).catch(function (err) {
                         console.log(err);
                     })];
             case 4:
@@ -107,7 +107,7 @@ var checkAlarm = function () { return __awaiter(void 0, void 0, void 0, function
                     port: mailPort,
                     auth: {
                         user: mailUser,
-                        pass: mailPassword
+                        pass: mailPassword, // Your password
                     }
                 });
                 mailOptions = {
@@ -118,7 +118,7 @@ var checkAlarm = function () { return __awaiter(void 0, void 0, void 0, function
                     html: messageBody,
                     headers: {
                         'priority': 'high'
-                    }
+                    },
                 };
                 // Send the email
                 transporter.sendMail(mailOptions, function (error, info) {

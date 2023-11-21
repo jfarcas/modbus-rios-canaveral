@@ -25,3 +25,23 @@ export type ReadParameters = {
     length: number;
     descriptions: CalderaValuesDescriptions;
 }[]
+
+export type AlarmHit = {
+    _index: string;
+    _type: string;
+    _id: string;
+    _version: number;
+    _score: null;
+    _source: Alarm;
+    sort: number[];
+}
+
+export type Alarm = {
+    id: string;
+    name: string;
+    date: Date;
+    value: number;
+    status: string;
+    mailSent: boolean;
+    updatedAt: Date;
+}

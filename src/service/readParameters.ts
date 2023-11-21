@@ -40,7 +40,7 @@ export const readParameters: ReadParameters = [
             {
                 description: 'Depresión Caldera 1',
                 multiplier: 1,
-                hasAlarm: (value: number) => {return value > 100000},
+                hasAlarm: (value: number) => {return value > 1},
                 state: (value: number):string => {return value > 100000 ? 'Error' : 'Ok'},
                 showOnScreen: false,
             },
@@ -343,40 +343,40 @@ export const readParameters: ReadParameters = [
             }
         ]
     },
-    {
-        clientId: 1,
-        readType: 'readInputRegisters',
-        address: 2009,
-        length: 4,
-        descriptions: [
-            {
-                description: 'Inercia Sonda 1',
-                multiplier: 10,
-                hasAlarm: (value: number) => {return value < 50},
-                state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
-                showOnScreen: true,
-            },
-            {
-                description: 'Inercia Sonda 2',
-                multiplier: 10,
-                hasAlarm: (value: number) => {return value < 50},
-                state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
-                showOnScreen: true,
-            },
-            {
-                description: 'Inercia Sonda 3',
-                multiplier: 10,
-                hasAlarm: (value: number) => {return value < 50},
-                state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
-                showOnScreen: true,
-            },
-            {
-                description: 'Inercia Sonda 4',
-                multiplier: 10,
-                hasAlarm: (value: number) => {return value < 50},
-                state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
-                showOnScreen: true,
-            },
-        ]
-    }
+    // {
+    //     clientId: 1,
+    //     readType: 'readInputRegisters',
+    //     address: 2009,
+    //     length: 4,
+    //     descriptions: [
+    //         {
+    //             description: 'Inercia Sonda 1',
+    //             multiplier: 10,
+    //             hasAlarm: (value: number) => {return value < 50},
+    //             state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
+    //             showOnScreen: true,
+    //         },
+    //         {
+    //             description: 'Inercia Sonda 2',
+    //             multiplier: 10,
+    //             hasAlarm: (value: number) => {return value < 50},
+    //             state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
+    //             showOnScreen: true,
+    //         },
+    //         {
+    //             description: 'Inercia Sonda 3',
+    //             multiplier: 10,
+    //             hasAlarm: (value: number) => {return value < 50},
+    //             state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
+    //             showOnScreen: true,
+    //         },
+    //         {
+    //             description: 'Inercia Sonda 4',
+    //             multiplier: 10,
+    //             hasAlarm: (value: number) => {return value < 50},
+    //             state: (value: number): string => { return value < 50 ? 'Temperatura Baja' : 'Ok'},
+    //             showOnScreen: true,
+    //         },
+    //     ]
+    // }
 ];

@@ -4,6 +4,7 @@ import {readParameters} from "./readParameters";
 
 const client = new ModbusRTU();
 client.setID(1)
+client.setTimeout(1500);
 
 async function readModBusData(boilerData: BoilerValue[], address: number = 0, length: number = 2, descriptions: CalderaValuesDescriptions, readType: string = 'readInputRegisters') {
     if (readType === 'readInputRegisters') {
@@ -42,8 +43,9 @@ export const readData = async (modbusUrl: string, modbusPort: number):Promise<Bo
         boilerData = await readModBusData(boilerData, parameter.address, parameter.length, descriptions, parameter.readType);
     }
 
-    await client.close(() => {console.log('Connection closed')})
-
     console.log(boilerData)
+    client.close(() => {console.log('Connection closed')})
+
+
     return boilerData
 }

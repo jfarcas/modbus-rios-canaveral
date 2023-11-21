@@ -40,7 +40,7 @@ export const readParameters: ReadParameters = [
             {
                 description: 'Depresión Caldera 1',
                 multiplier: 1,
-                hasAlarm: (value: number) => {return value > 1},
+                hasAlarm: (value: number) => {return value > 100000},
                 state: (value: number):string => {return value > 100000 ? 'Error' : 'Ok'},
                 showOnScreen: false,
             },

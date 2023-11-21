@@ -1,6 +1,5 @@
 import express from 'express';
 import {readData} from './service/service'
-import {saveToElk} from './service/save-to-elk'
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -15,10 +14,6 @@ app.get('/', async (_req, res) => {
 
   try {
     const result = await readData(modbusUrl, modbusPort);
-    console.time('Boiler data')
-    await saveToElk(result)
-    console.timeEnd('Boiler data')
-    console.log('Después de guardar em ELK!!!!')
     res.json(result); // Assuming BoilerData is JSON-serializable
   } catch (error) {
     // save data to ekl error read modbus data

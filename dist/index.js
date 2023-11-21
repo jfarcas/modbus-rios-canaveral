@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const service_1 = require("./service/service");
-const save_to_elk_1 = require("./service/save-to-elk");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const modbusUrl = process.env.PLC_ADDRESS ? process.env.PLC_ADDRESS : 'localhost:4321';
@@ -16,10 +15,6 @@ app.use(express_1.default.json());
 app.get('/', async (_req, res) => {
     try {
         const result = await (0, service_1.readData)(modbusUrl, modbusPort);
-        console.time('Boiler data');
-        await (0, save_to_elk_1.saveToElk)(result);
-        console.timeEnd('Boiler data');
-        console.log('Después de guardar em ELK!!!!');
         res.json(result); // Assuming BoilerData is JSON-serializable
     }
     catch (error) {

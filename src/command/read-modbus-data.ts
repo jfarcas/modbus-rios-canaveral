@@ -10,6 +10,5 @@ const readModbusData = async () => {
 }
 
 readModbusData()
-    .then(() => {console.time('Modbus data readed')})
+    .then(() => {console.log('Modbus data readed')})
     .catch((err) => {console.log(err)})
-    .finally(() => {console.timeEnd('Modbus data readed)')})

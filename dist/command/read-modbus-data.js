@@ -11,6 +11,5 @@ const readModbusData = async () => {
     await (0, save_to_elk_1.saveToElk)(result);
 };
 readModbusData()
-    .then(() => { console.time('Modbus data readed'); })
-    .catch((err) => { console.log(err); })
-    .finally(() => { console.timeEnd('Modbus data readed)'); });
+    .then(() => { console.log('Modbus data readed'); })
+    .catch((err) => { console.log(err); });

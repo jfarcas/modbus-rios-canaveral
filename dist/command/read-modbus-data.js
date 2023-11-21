@@ -8,7 +8,6 @@ const readModbusData = async () => {
     const modbusUrl = process.env.PLC_ADDRESS ? process.env.PLC_ADDRESS : 'localhost';
     const modbusPort = process.env.PLC_PORT ? parseInt(process.env.PLC_PORT, 10) : 502;
     const result = await (0, service_1.readData)(modbusUrl, modbusPort);
-    console.time('Boiler data');
     await (0, save_to_elk_1.saveToElk)(result);
 };
 readModbusData()

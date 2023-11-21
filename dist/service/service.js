@@ -21,7 +21,6 @@ const readData = async (modbusUrl, modbusPort) => {
         client.setID(parameter.clientId);
         boilerData = await readModBusData(boilerData, parameter.address, parameter.length, descriptions, parameter.readType);
     }
-    console.log(boilerData);
     client.close(() => { console.log('Connection closed'); });
     return boilerData;
 };

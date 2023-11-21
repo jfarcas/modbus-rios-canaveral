@@ -6,7 +6,6 @@ const readModbusData = async () => {
     const modbusUrl: string  = process.env.PLC_ADDRESS ? process.env.PLC_ADDRESS : 'localhost'
     const modbusPort: number = process.env.PLC_PORT ? parseInt(process.env.PLC_PORT, 10) : 502;
     const result = await readData(modbusUrl, modbusPort);
-    console.time('Boiler data')
     await saveToElk(result)
 }
 

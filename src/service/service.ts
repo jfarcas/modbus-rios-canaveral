@@ -21,7 +21,6 @@ export const readData = async (modbusUrl: string, modbusPort: number):Promise<Bo
         boilerData = await readModBusData(boilerData, parameter.address, parameter.length, descriptions, parameter.readType);
     }
 
-    console.log(boilerData)
     client.close(() => {console.log('Connection closed')})
 
 

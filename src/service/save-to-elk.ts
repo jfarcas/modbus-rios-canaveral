@@ -25,31 +25,15 @@ export const saveToElk = async (result: BoilerData) => {
     const MY_NAMESPACE = '1b671a64-40d5-491e-99b0-da01ff1f3341';
 
     for (const data of result) {
-        if (data.hasAlarm) {
-            const id: string = uuidv5(data.name, MY_NAMESPACE);
-            try {
-                // buscamos el error en base de datos
-                // si no esta o nos da error lo creamos, en caso contrario no hacemos nada
-                const savedData:ApiResponse = await elkClient.get({ id:id, index:alarmIndex })
-                console.log(savedData.body._source)
-                const oldAlarm = savedData.body._source;
-                if (oldAlarm.mailSent === true) {
-                    const alarmData = {
-                        date: new Date(),
-                        value: data.value,
-                        status: data.state,
-                        mailSent: false,
-                        updatedAt: new Date()
-                    }
-
-                    await elkClient.update({ index: alarmIndex, id: id, body: {doc: alarmData}}).catch((err: any) => {
-                        console.log(err)
-                    })
-                }
-            } catch (error) {
-                const documentData = {
-                    id: id,
-                    name: data.name,
+        const id: string = uuidv5(data.name, MY_NAMESPACE);
+        try {
+            // buscamos el error en base de datos
+            // si no esta o nos da error lo creamos, en caso contrario no hacemos nada
+            const savedData:ApiResponse = await elkClient.get({ id:id, index:alarmIndex })
+            console.log(savedData.body._source)
+            const oldAlarm = savedData.body._source;
+            if (oldAlarm.mailSent === true && data.hasAlarm !== oldAlarm.status && data.hasAlarm ) {
+                const alarmData = {
                     date: new Date(),
                     value: data.value,
                     status: data.state,
@@ -57,13 +41,28 @@ export const saveToElk = async (result: BoilerData) => {
                     updatedAt: new Date()
                 }
 
-                await elkClient.index({ id:id,  index: alarmIndex, body:documentData}).catch((err: any) => {
+                await elkClient.update({ index: alarmIndex, id: id, body: {doc: alarmData}}).catch((err: any) => {
                     console.log(err)
                 })
             }
+        } catch (error) {
+            const documentData = {
+                id: id,
+                name: data.name,
+                date: new Date(),
+                value: data.value,
+                status: data.state,
+                mailSent: !data.hasAlarm,
+                updatedAt: new Date()
+            }
 
-            console.log(id)
+            await elkClient.index({ id:id,  index: alarmIndex, body:documentData}).catch((err: any) => {
+                console.log(err)
+            })
         }
+
+        console.log(id)
+
     }
 }
 

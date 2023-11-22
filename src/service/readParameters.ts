@@ -330,8 +330,8 @@ export const readParameters: ReadParameters = [
             {
                 description: 'Temperatura ACS',
                 multiplier: 1,
-                hasAlarm: (value: number) => {return value < 50},
-                state: (value: number): string => {return value < 50 ? 'Error' : 'Ok'},
+                hasAlarm: (value: number) => {return value < 60},
+                state: (value: number): string => {return value < 60 ? 'Error' : 'Ok'},
                 showOnScreen: true,
             },
             {

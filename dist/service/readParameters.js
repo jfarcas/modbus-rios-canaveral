@@ -330,15 +330,15 @@ exports.readParameters = [
             {
                 description: 'Temperatura ACS',
                 multiplier: 1,
-                hasAlarm: (value) => { return value < 61; },
-                state: (value) => { return value < 61 ? 'Error' : 'Ok'; },
+                hasAlarm: (value) => { return value < 50; },
+                state: (value) => { return value < 50 ? 'Error' : 'Ok'; },
                 showOnScreen: true,
             },
             {
                 description: 'Consigna ACS',
                 multiplier: 1,
                 hasAlarm: (value) => { return value > 10000; },
-                state: (value) => { return value < -1 ? 'Error' : 'Ok'; },
+                state: (value) => { return value > 10000 ? 'Error' : 'Ok'; },
                 showOnScreen: true,
             }
         ]
@@ -352,29 +352,29 @@ exports.readParameters = [
             {
                 description: 'Inercia Sonda 1',
                 multiplier: 10,
-                hasAlarm: (value) => { return value < 50; },
-                state: (value) => { return value < 50 ? 'Temperatura Baja' : 'Ok'; },
+                hasAlarm: (value) => { return value < 55; },
+                state: (value) => { return value < 55 ? 'Temperatura Baja' : 'Ok'; },
                 showOnScreen: true,
             },
             {
                 description: 'Inercia Sonda 2',
                 multiplier: 10,
-                hasAlarm: (value) => { return value < 50; },
-                state: (value) => { return value < 50 ? 'Temperatura Baja' : 'Ok'; },
+                hasAlarm: (value) => { return value < 55; },
+                state: (value) => { return value < 55 ? 'Temperatura Baja' : 'Ok'; },
                 showOnScreen: true,
             },
             {
                 description: 'Inercia Sonda 3',
                 multiplier: 10,
-                hasAlarm: (value) => { return value < 50; },
-                state: (value) => { return value < 50 ? 'Temperatura Baja' : 'Ok'; },
+                hasAlarm: (value) => { return value < 55; },
+                state: (value) => { return value < 55 ? 'Temperatura Baja' : 'Ok'; },
                 showOnScreen: true,
             },
             {
                 description: 'Inercia Sonda 4',
                 multiplier: 10,
-                hasAlarm: (value) => { return value < 50; },
-                state: (value) => { return value < 50 ? 'Temperatura Baja' : 'Ok'; },
+                hasAlarm: (value) => { return value < 55; },
+                state: (value) => { return value < 55 ? 'Temperatura Baja' : 'Ok'; },
                 showOnScreen: true,
             },
         ]

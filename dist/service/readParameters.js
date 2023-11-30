@@ -1,6 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.readParameters = void 0;
+const boilerOperationMode = {
+    0: 'Carga permanente',
+    1: 'Múltiples sensores en el funcionamiento del acumulador',
+    2: 'Funcionamiento del acumulador',
+    3: 'Cascada',
+    4: 'Modo de quemador',
+    5: 'Pot. externa',
+    6: 'Prueba de potencia',
+    20: 'Funcionamiento automático',
+    21: 'Agua caliente sanitaria',
+    22: 'Calefac extra',
+    23: 'Deshollinador',
+    80: 'Fallo',
+    90: 'Resolución de problemas',
+    99: 'Apagada'
+};
 const boilerState = {
     0: 'Fallo',
     1: 'Off',
@@ -92,9 +108,9 @@ exports.readParameters = [
             {
                 description: 'Modo operativo caldera 1',
                 multiplier: 1,
-                hasAlarm: (value) => { return value > 10000; },
-                state: (value) => { return value > 100000 ? 'Error' : 'Ok'; },
-                showOnScreen: false,
+                hasAlarm: (value) => { return value === 80; },
+                state: (value) => boilerOperationMode[value],
+                showOnScreen: true,
             },
             {
                 description: 'Arranque caldera 1',
@@ -204,9 +220,9 @@ exports.readParameters = [
             {
                 description: 'Modo operativo caldera 2',
                 multiplier: 1,
-                hasAlarm: (value) => { return value > 10000; },
-                state: (value) => { return value > 100000 ? 'Error' : 'Ok'; },
-                showOnScreen: false,
+                hasAlarm: (value) => { return value === 80; },
+                state: (value) => boilerOperationMode[value],
+                showOnScreen: true,
             },
             {
                 description: 'Arranque caldera 2',

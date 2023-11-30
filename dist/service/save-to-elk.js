@@ -28,12 +28,12 @@ const saveToElk = async (result) => {
             const savedData = await elkClient.get({ id: id, index: alarmIndex });
             console.log(savedData.body._source);
             const oldAlarm = savedData.body._source;
-            if (oldAlarm.mailSent === true && data.state !== oldAlarm.status && data.hasAlarm) {
+            if (oldAlarm.mailSent === true && data.state !== oldAlarm.status) {
                 const alarmData = {
                     date: new Date(),
                     value: data.value,
                     status: data.state,
-                    mailSent: false,
+                    mailSent: !data.hasAlarm,
                     updatedAt: new Date()
                 };
                 await elkClient.update({ index: alarmIndex, id: id, body: { doc: alarmData } }).catch((err) => {

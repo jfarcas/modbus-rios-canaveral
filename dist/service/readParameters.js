@@ -108,7 +108,7 @@ exports.readParameters = [
             {
                 description: 'Modo operativo caldera 1',
                 multiplier: 1,
-                hasAlarm: (value) => { return value === 80; },
+                hasAlarm: (value) => { return value === 80 || value === 99; },
                 state: (value) => boilerOperationMode[value],
                 showOnScreen: true,
             },
@@ -220,7 +220,7 @@ exports.readParameters = [
             {
                 description: 'Modo operativo caldera 2',
                 multiplier: 1,
-                hasAlarm: (value) => { return value === 80; },
+                hasAlarm: (value) => { return value === 80 || value === 99; },
                 state: (value) => boilerOperationMode[value],
                 showOnScreen: true,
             },

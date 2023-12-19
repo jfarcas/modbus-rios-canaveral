@@ -108,7 +108,7 @@ export const readParameters: ReadParameters = [
             {
                 description: 'Modo operativo caldera 1',
                 multiplier: 1,
-                hasAlarm: (value: number) => {return value === 80},
+                hasAlarm: (value: number) => {return value === 80 || value === 99},
                 state: (value: number): string => boilerOperationMode[value],
                 showOnScreen: true,
             },
@@ -220,7 +220,7 @@ export const readParameters: ReadParameters = [
             {
                 description: 'Modo operativo caldera 2',
                 multiplier: 1,
-                hasAlarm: (value: number) => {return value === 80},
+                hasAlarm: (value: number) => {return value === 80|| value === 99},
                 state: (value: number): string => boilerOperationMode[value],
                 showOnScreen: true,
             },

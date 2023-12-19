@@ -11,6 +11,10 @@ const saveToElk = async (result) => {
     const elkPort = process.env.ELK_PORT ? parseInt(process.env.ELK_PORT, 10) : 9200;
     const elkClient = new elasticsearch_1.Client({
         node: elkUrl + ':' + elkPort,
+        auth: {
+            username: 'elastic',
+            password: 'V523a_325b'
+        },
     });
     const documentData = {
         data: result,

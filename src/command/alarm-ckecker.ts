@@ -22,6 +22,10 @@ const alarmIndex: string = 'canaveral-error-data';
 
 const elkClient = new Client({
     node: elkUrl + ':' + elkPort,
+    auth: {
+        username: 'elastic',
+        password: 'V523a_325b'
+    },
 })
 
 const checkAlarm = async () => {

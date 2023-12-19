@@ -40,6 +40,10 @@ const mailCc = process.env.MAIL_CC ? process.env.MAIL_CC : 'localhost@localhost'
 const alarmIndex = 'canaveral-error-data';
 const elkClient = new elasticsearch_1.Client({
     node: elkUrl + ':' + elkPort,
+    auth: {
+        username: 'elastic',
+        password: 'V523a_325b'
+    },
 });
 const checkAlarm = async () => {
     const data = await elkClient.search({

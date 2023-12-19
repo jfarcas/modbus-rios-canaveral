@@ -9,11 +9,13 @@ const alarmIndex: string = 'canaveral-error-data';
 export const saveToElk = async (result: BoilerData) => {
     const elkUrl: string  = process.env.ELK_URL ? process.env.ELK_URL : 'http://localhost';
     const elkPort: number = process.env.ELK_PORT ? parseInt(process.env.ELK_PORT, 10) : 9200;
+    const elkUser: string = process.env.ELK_USER ? process.env.ELK_USER : '';
+    const elkPassword: string = process.env.ELK_PASSWORD ? process.env.ELK_PASSWORD : '';
     const elkClient = new Client({
         node: elkUrl + ':' + elkPort,
         auth: {
-            username: 'elastic',
-            password: 'V523a_325b'
+            username: elkUser,
+            password: elkPassword
         },
     })
     const documentData = {

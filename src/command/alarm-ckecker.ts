@@ -9,6 +9,8 @@ config( {path: __dirname + '/../../.env'});
 
 const elkUrl: string = process.env.ELK_URL ? process.env.ELK_URL : 'http://localhost';
 const elkPort: number = process.env.ELK_PORT ? parseInt(process.env.ELK_PORT, 10) : 9200;
+const elkUser: string = process.env.ELK_USER ? process.env.ELK_USER : '';
+const elkPassword: string = process.env.ELK_PASSWORD ? process.env.ELK_PASSWORD : '';
 const mailServer: string = process.env.MAIL_SERVER ? process.env.MAIL_SERVER : 'localhost';
 const mailPort: number = parseInt(process.env.MAIL_PORT ?? '587', 10) ;
 const mailUser: string = process.env.MAIL_USER ? process.env.MAIL_USER : 'localhost';
@@ -23,8 +25,8 @@ const alarmIndex: string = 'canaveral-error-data';
 const elkClient = new Client({
     node: elkUrl + ':' + elkPort,
     auth: {
-        username: 'elastic',
-        password: 'V523a_325b'
+        username: elkUser,
+        password: elkPassword
     },
 })
 

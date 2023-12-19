@@ -30,6 +30,8 @@ const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)({ path: __dirname + '/../../.env' });
 const elkUrl = process.env.ELK_URL ? process.env.ELK_URL : 'http://localhost';
 const elkPort = process.env.ELK_PORT ? parseInt(process.env.ELK_PORT, 10) : 9200;
+const elkUser = process.env.ELK_USER ? process.env.ELK_USER : '';
+const elkPassword = process.env.ELK_PASSWORD ? process.env.ELK_PASSWORD : '';
 const mailServer = process.env.MAIL_SERVER ? process.env.MAIL_SERVER : 'localhost';
 const mailPort = parseInt((_a = process.env.MAIL_PORT) !== null && _a !== void 0 ? _a : '587', 10);
 const mailUser = process.env.MAIL_USER ? process.env.MAIL_USER : 'localhost';
@@ -41,8 +43,8 @@ const alarmIndex = 'canaveral-error-data';
 const elkClient = new elasticsearch_1.Client({
     node: elkUrl + ':' + elkPort,
     auth: {
-        username: 'elastic',
-        password: 'V523a_325b'
+        username: elkUser,
+        password: elkPassword
     },
 });
 const checkAlarm = async () => {

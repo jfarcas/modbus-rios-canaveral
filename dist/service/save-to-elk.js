@@ -9,11 +9,13 @@ const alarmIndex = 'canaveral-error-data';
 const saveToElk = async (result) => {
     const elkUrl = process.env.ELK_URL ? process.env.ELK_URL : 'http://localhost';
     const elkPort = process.env.ELK_PORT ? parseInt(process.env.ELK_PORT, 10) : 9200;
+    const elkUser = process.env.ELK_USER ? process.env.ELK_USER : '';
+    const elkPassword = process.env.ELK_PASSWORD ? process.env.ELK_PASSWORD : '';
     const elkClient = new elasticsearch_1.Client({
         node: elkUrl + ':' + elkPort,
         auth: {
-            username: 'elastic',
-            password: 'V523a_325b'
+            username: elkUser,
+            password: elkPassword
         },
     });
     const documentData = {

@@ -97,9 +97,10 @@ const checkAlarm = async () => {
             }
         });
     }
-
+    return process.exit(0);
 }
 
 checkAlarm().then(() => {
     console.log('done')
+    return process.exit(0);
 });

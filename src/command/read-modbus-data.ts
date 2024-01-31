@@ -12,3 +12,4 @@ const readModbusData = async () => {
 readModbusData()
     .then(() => {console.log('Modbus data readed')})
     .catch((err) => {console.log(err)})
+    .finally(() => {process.exit()})
